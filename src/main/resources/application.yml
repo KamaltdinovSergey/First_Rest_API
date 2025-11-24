@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: "jdbc:postgresql://localhost:55000/postgres"
+    password: 123456
+    username: postgres
+  application:
+      name: DemoRestAPI
+
+
+#    driverClassName: org.postgresql.Driver
+#  jpa:
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    #это специальная надстройка над драйвером для общения с бд
+
+
+
