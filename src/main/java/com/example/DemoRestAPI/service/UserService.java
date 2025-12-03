@@ -16,11 +16,11 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<User> findAll() {
+    public List<User> getAll() {
         return  userRepository.findAll();
     }
 
-    public Optional<User> findById(Long id) {
+    public Optional<User> getById(Long id) {
         return userRepository.findById(id);
     }
 
@@ -28,7 +28,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public Optional<?> delete(User user) {
-        return userRepository.findById(user.getId());
+    public void delete(User user) {
+         userRepository.delete(user);
     }
 }

@@ -21,13 +21,13 @@ public class DemoRestController {
     // Получение всех пользователей (GET /api/users)
     @GetMapping
     public List<User> getAllUsers() {
-        return userService.findAll();
+        return userService.getAll();
     }
 
     // Получение одного пользователя по ID (GET /api/users/{id})
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
-        return userService.findById(id)
+        return userService.getById(id)
                 .map(ResponseEntity::ok) // Если пользователь найден
                 .orElse(ResponseEntity.notFound().build());
     }
@@ -41,7 +41,7 @@ public class DemoRestController {
     // Обновление существующего пользователя (PUT /api/users/{id})
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User updatedUser) {
-        return userService.findById(id)
+        return userService.getById(id)
                 .map(user -> {
                     user.setName(updatedUser.getName());
                     user.setEmail(updatedUser.getEmail());
@@ -54,7 +54,7 @@ public class DemoRestController {
     // Удаление пользователя (DELETE /api/users/{id})
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable Long id) {
-        return userService.findById(id)
+        return userService.getById(id)
                 .map(user -> {
                     userService.delete(user);
                     return ResponseEntity.noContent().build();
